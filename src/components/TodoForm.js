@@ -14,7 +14,9 @@ class TodoFrom extends Component {
 
   addTodo() {
     if(this.state.newTodo === '')return;
-    this.props.add(this.state.newTodo); //子から親へデータを渡す
+    const todos = JSON.parse(localStorage.getItem('todos')) || []; //Appコンポーネントで行っていたtodosプロパティの管理をTodoListコンポーネントで行う
+    todos.push(this.state.newTodo);
+    localStorage.setItem('todos',JSON.stringify(todos)); //ローカルストレージに直接アクセスしてTodoリストのデータロード、削除を行う
     this.setState({newTodo:''});
   }
 
