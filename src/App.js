@@ -1,14 +1,13 @@
-import React, { Component } from 'react';
-import TodoForm from './components/TodoForm';
+import React from 'react';
 import TodoList from './components/TodoList';
 
-class App extends Component {
+class App extends React.Component {
   
   render() {
     return ( //以下の<div>タグ内は子コンポーネントを呼び出すだけの処理
       <div> 
-        <TodoForm></TodoForm> 
-        <TodoList></TodoList> 
+         <TodoList /> 
+        {/* <CompleteList></CompleteList> */}
       </div>
     ); //↑TodoFormコンポーネントはローカルストレージに直接アクセスしてTodoリストのデータ追加を行う
   }
