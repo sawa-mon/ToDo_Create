@@ -5,20 +5,21 @@ const TodoList=()=>{
   const inputEl = useRef(null)
   const [todos,setTodos]=useState([])//初期値
 
-  //  const [State名　,  Stateを変える関数] =useState("初期値")
+  //  const [State名 ,  Stateを変える関数] =useState("初期値")
 
-const addTodo=(inputEl)=>{
+const addTodo = (inputEl)=>{
     const title=inputEl.current.value //文字列としての認識の為のブロック
       const newTodo={
           title:title,
-          isCompleted: false //最初は完了していないためfalse
+          isCompleted: false //最初は完了していないためfalse 逆にすると完了と戻るが逆転する
       }
-  setTodos((prevState)=>{
+  setTodos((prevState)=>{ //1回目入力以降のTodo入力エリアの設定
     const newTodoList=[...prevState,newTodo]
-      inputEl.current.value= "";
+      inputEl.current.value= ""; //１回目入力以降の２回めのTxtエリアの状態を指す
       return newTodoList
   })
 }
+
 
 const deleteTodo=(index)=>{
 }
@@ -34,6 +35,7 @@ return (
             <TodoListItem deleteTodo = {deleteTodo} isCompleted = {todo.isCompleted} key = {index} title = {todo.title} index = {index}/>
             ))
           )}
+          
       <h2>完了</h2>
           {todos.length > 0 && (
             todos.map((todo,index)=>(
