@@ -26,8 +26,8 @@ export const TodoForm=( {tasks, setTasks} ) => {
 
   return(
     <div className='todo-form'>
-      <input type='text' ref={inputRef} placeholder='タスクを入力' /> 
-      <button onClick={addTask}>タスクを追加</button>
+      <input type='text' ref={inputRef} placeholder='あるならタスクを追加しろ' /> 
+      <button onClick={addTask}>お前に科すタスク</button>
     </div>
   );
 };
