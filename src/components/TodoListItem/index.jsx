@@ -1,17 +1,17 @@
 import React from 'react';
-// import styled from "styled-components";
+import styled from "styled-components";
 
-// const StyledTodoListItem = styled.div`
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-//   padding: 16px;
-//   border-bottom: 1px solid #ddd;
-// `;
-// const Wrap = styled.div`
-//   display: flex;
-//   align-items: center;
-// `;
+const StyledTodoListItem = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border-bottom: 1px solid #ddd;
+`;
+const Wrap = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
 export const TodoListItem=( { task,tasks,index,setTasks} ) => {
   const [isEdited, setIsEdited] = React.useState(false);
@@ -46,20 +46,22 @@ export const TodoListItem=( { task,tasks,index,setTasks} ) => {
 
 
   return (
-    <div className='todo-list-item'>
+    <StyledTodoListItem>
       {isEdited ? (
-        <div>
+        <Wrap>
         <input type='text' defaultValue={task.title} ref={inputRef} />
         <button onClick={handleEdit}>変更する</button>
-        </div>
+        </Wrap>
       ) : (
-        <div>
+        <Wrap>
         <input onClick={handleCheck} type='checkbox' check = { task.checked } readOnly />
         {task.checked ? <del>{task.title}</del> : task.title}
-        </div>
+        </Wrap>
       )}
-      <button onClick={handleRemove}>削除</button>
-      <button onClick={() => setIsEdited(!isEdited)}>編集</button>
-    </div>
+        <Wrap>
+          <button onClick={handleRemove}>削除</button>
+          <button onClick={() => setIsEdited(!isEdited)}>編集</button>
+        </Wrap>
+    </StyledTodoListItem>
   );
 };
