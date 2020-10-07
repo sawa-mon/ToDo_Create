@@ -1,10 +1,8 @@
 import React from 'react';
-// import styled from 'styled-components'
+import styled from 'styled-components'
 import { TodoListItem } from '../TodoListItem';
 
-// const StyledTodoError = styled.div`
-// padding: 16px;
-// `;
+
 
 export const TodoList=({ tasks, setTasks }) => {
   return tasks.length > 0 ? (

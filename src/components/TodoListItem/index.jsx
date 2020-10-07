@@ -5,8 +5,9 @@ const StyledTodoListItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px;
+  padding: 14px;
   border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
 `;
 const Wrap = styled.div`
   display: flex;
