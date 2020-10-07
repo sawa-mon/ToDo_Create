@@ -1,16 +1,19 @@
 import React from 'react';
-import TodoList from './components/TodoList';
+import { TodoForm } from './components/TodoForm';
+import { TodoList } from './components/TodoList';
 
-class App extends React.Component {
-  
-  render() {
-    return ( //以下の<div>タグ内は子コンポーネントを呼び出すだけの処理
-      <div> 
-         <TodoList /> 
-        {/* <CompleteList></CompleteList> */}
+function App() {
+  const [tasks,setTasks] = React.useState([]);
+
+// console.log(tasks)
+
+    return (
+      <div className='App'>
+        <h2>マイタスク</h2>
+        <TodoForm tasks={tasks} setTasks={setTasks}/>
+        <TodoList tasks={tasks} setTasks={setTasks} />
       </div>
-    ); //↑TodoFormコンポーネントはローカルストレージに直接アクセスしてTodoリストのデータ追加を行う
-  }
+    );
 }
 
 export default App;
