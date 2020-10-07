@@ -1,16 +1,26 @@
 import React from 'react';
-import TodoList from './components/TodoList';
+import logo from './logo.svg';
+import './App.css';
 
-class App extends React.Component {
-  
-  render() {
-    return ( //以下の<div>タグ内は子コンポーネントを呼び出すだけの処理
-      <div> 
-         <TodoList /> 
-        {/* <CompleteList></CompleteList> */}
-      </div>
-    ); //↑TodoFormコンポーネントはローカルストレージに直接アクセスしてTodoリストのデータ追加を行う
-  }
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
 }
 
 export default App;
