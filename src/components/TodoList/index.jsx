@@ -1,24 +1,12 @@
 import React from 'react';
-import styled from 'styled-components'
-import { TodoListItem } from '../TodoListItem';
+import {TodoListItem} from '../TodoListItem/index';
 
+export const TodoList  = () => {
 
-
-export const TodoList=({ tasks, setTasks }) => {
-  return tasks.length > 0 ? (
-    tasks.map(( task, index ) => (
-      <TodoListItem
-      key={index}
-      index={index}
-      task={task}
-      tasks={tasks}
-      setTasks={setTasks}
-      />
-      ))
-      ) : (
-        <div>
-          タスクねぇのか？
-            死んでるマグロか？学べよ！鍛えろよ！
-        </div>
-      );
-};
+  return(
+    <div>
+      <p>Todo実施数{/* {`Todo　未実施${}個：実施${}：総数${}個`} */}</p>
+      <TodoListItem />
+    </div>
+  );
+}

@@ -9,9 +9,9 @@ function App() {
 
     return (
       <div className='App'>
-        <h2>マイタスク</h2>
-        <TodoForm tasks={tasks} setTasks={setTasks}/>
-        <TodoList tasks={tasks} setTasks={setTasks} />
+        <h2>タスク一覧</h2>
+        <TodoForm />
+        <TodoList />
       </div>
     );
 }
