@@ -1,19 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { TodoForm } from './components/TodoForm';
 import { TodoList } from './components/TodoList';
 
-function App() {
-  const [tasks,setTasks] = React.useState([]);
-
-// console.log(tasks)
-
+const App = () => {
+  const[tasks, setTasks] = useState([]);
+  
     return (
       <div className='App'>
         <h2>タスク一覧</h2>
-        <TodoForm />
-        <TodoList />
+        <TodoForm tasks={tasks} setTasks={setTasks}/>
+        <TodoList tasks={tasks} setTasks={setTasks}/>
       </div>
     );
-}
+};
 
 export default App;
