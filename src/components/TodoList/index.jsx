@@ -1,8 +1,10 @@
-import React from 'react';
-import {TodoListItem} from '../TodoListItem/index';
+import React from 'react'
+import { TodoListItem } from '../TodoListItem';
 
-export const TodoList  = ({tasks, setTasks}) => {
+export const TodoList = ({tasks, setTasks}) => {
   return tasks.map((task, index) => (
-    <TodoListItem setTasks={setTasks} tasks={tasks} task={task} index={index} />
-  ))
+    <div>
+      <TodoListItem key={index} index={index} tasks={tasks} task={task} setTasks={setTasks} />
+    </div>
+    ))
 };

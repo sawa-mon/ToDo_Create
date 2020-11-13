@@ -1,25 +1,31 @@
-import React, { useRef, useState } from 'react';
+import React, {useRef} from 'react'
+// import styled from 'styled-components';
+
 
 
 export const TodoForm = ({tasks, setTasks}) => {
   const inputEl = useRef(null);
 
-  
-  const addTodo = () => {
+  const addTodo = ()　=> {
     const value = inputEl.current.value;
 
-    setTasks([
-      ...tasks,
-      {title: value, done: false},
-    ]);
-
-    inputEl.current.value="";
-  };
+    if(!value.length) {
+      return;
+    }
     
-    return(
-      <div>
-        <input type="text" ref={inputEl} placeholder="タスク記入" />
-        <button onClick={addTodo}>タスク追加</button>
-      </div>
-  );
+    setTasks([
+    {
+      title: value,
+    },  ...tasks,
+  ]);
+
+  inputEl.current.value = "";
+};
+  
+  return (
+    <div>
+      <input type="text" ref={inputEl} placeholder="タスクを追加"/>
+      <button onClick={addTodo}>追加する</button>
+    </div>
+  )
 };
