@@ -12,7 +12,7 @@ export const TodoForm = ({tasks, setTasks}) => {
     setTasks([
       {
         title: value,
-        done: false,
+        checked: false,
       }, ...tasks
     ])
 
