@@ -1,65 +1,50 @@
-import React from 'react';
-// import styled from "styled-components";
+import React,{useState, useRef, useEffect} from 'react';
 
-// const StyledTodoListItem = styled.div`
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-//   padding: 16px;
-//   border-bottom: 1px solid #ddd;
-// `;
-// const Wrap = styled.div`
-//   display: flex;
-//   align-items: center;
-// `;
-
-export const TodoListItem=( { task,tasks,index,setTasks} ) => {
-  const [isEdited, setIsEdited] = React.useState(false);
-  const inputRef=React.useRef(null);
-
-  const handleCheck = () => {
-    const newTasks = tasks;
-    newTasks[index].checked = !task.checked;
-
-    setTasks([...newTasks]);
-  }
-
-  const handleRemove = () => {
-    const removeTasks = tasks;
-    removeTasks.splice(index, 1);
-    setTasks([...removeTasks]);
-  }
+export const TodoListItem = ({task, tasks, setTasks, index}) => {
+  const[edit, setEdit] = useState(false);
+  const inputEl = useRef(null);
 
   const handleEdit = () => {
-    const value = inputRef.current.value;
-    if (!value.length) {
-      return;
-    }
+    const value = inputEl.current.value;
+    const editEndTodo = tasks;
+    editEndTodo[index].title = value; //サンプル確認箇所
+    setTasks([...editEndTodo]);
 
-    const newTasks = tasks;
-    newTasks[index].title = value;
-    setTasks([...newTasks]);
+    setEdit(false);
+  }
 
-    setIsEdited(false);
-  };
+  const handledone = () => {
+    const doneTodo = tasks;
+    doneTodo[index].checked = !task.checked;
+    setTasks([...doneTodo]);
+  }
 
-
-
-  return (
-    <div className='todo-list-item'>
-      {isEdited ? (
-        <div>
-        <input type='text' defaultValue={task.title} ref={inputRef} />
-        <button onClick={handleEdit}>変更する</button>
-        </div>
-      ) : (
-        <div>
-        <input onClick={handleCheck} type='checkbox' check = { task.checked } readOnly />
-        {task.checked ? <del>{task.title}</del> : task.title}
-        </div>
-      )}
-      <button onClick={handleRemove}>削除</button>
-      <button onClick={() => setIsEdited(!isEdited)}>編集</button>
+  const handleDelete = () => {
+    const deleteTodo = tasks;
+      deleteTodo.splice(index, 1);
+      setTasks([...deleteTodo]);
+  }
+  console.log(task.checked)
+  
+  return(
+    <div>
+        {edit ? (
+          <div>
+            <button onClick={handleEdit}>更新する</button>
+            <input type="text" defaultValue={task.title} ref={inputEl}/>
+          </div>
+        ) : (
+          <div>
+            <input onClick={handledone} type="checkBox" check={task.checked}/>
+              {task.checked ? (
+                <del>{task.title}</del>
+                ) : (
+                  <span>{task.title}</span>
+              )}
+          </div>
+        )}
+      <button onClick={() => setEdit(!edit)}>編集する</button>
+      <button onClick={handleDelete}>削除する</button>
     </div>
-  );
-};
+  )
+}

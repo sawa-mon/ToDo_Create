@@ -1,34 +1,29 @@
-import React from 'react';
+import React, {useRef} from 'react';
 
-export const TodoForm=( {tasks, setTasks} ) => {
-  const inputRef=React.useRef(null);
-
-  const addTask=() => {
-    //input要素のバリューを取得してsetTasksを実行
-    const value=inputRef.current.value;
-    
-    //入力値が空だった場合無効化
-    if (!value.length ) {
-      return;
+export const TodoForm = ({tasks, setTasks}) => {
+  const inputEl = useRef(null);
+  
+  const addTodo = () => {
+    const value = inputEl.current.value;
+    if(!value.length) {
+      return
     }
 
     setTasks([
       {
         title: value,
         checked: false,
-      },
-      ...tasks,
-    ]);
-    
-    //入力したらinputを空にする
-    inputRef.current.value='';
-  };
+      }, ...tasks
+    ])
 
+    inputEl.current.value = "";
+  }
+
+  
   return(
-    <div className='todo-form'>
-      <input type='text' ref={inputRef} placeholder='あるならタスクを追加しろ' /> 
-      <button onClick={addTask}>お前に科すタスク</button>
+    <div>
+      <input type="text" ref={inputEl}/>
+      <button onClick={addTodo} >タスクを追加する</button>
     </div>
-  );
+  )
 };
-
