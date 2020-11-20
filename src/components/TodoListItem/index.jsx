@@ -1,9 +1,9 @@
-import React,{useState, useRef, useEffect} from 'react';
+import React,{useState, useRef} from 'react';
 
 export const TodoListItem = ({task, tasks, setTasks, index}) => {
   const[edit, setEdit] = useState(false);
   const inputEl = useRef(null);
-
+  
   const handleEdit = () => {
     const value = inputEl.current.value;
     const editEndTodo = tasks;
@@ -24,7 +24,6 @@ export const TodoListItem = ({task, tasks, setTasks, index}) => {
       deleteTodo.splice(index, 1);
       setTasks([...deleteTodo]);
   }
-  console.log(task.checked)
   
   return(
     <div>
