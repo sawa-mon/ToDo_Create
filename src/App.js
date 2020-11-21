@@ -3,14 +3,15 @@ import { TodoForm } from './components/TodoForm';
 import { TodoList } from './components/TodoList';
 import { ProgressBar } from './components/UI/ProgressBar';
 
+
 const App = () => {
   const[tasks, setTasks] = useState([]);
-
+  
   const memoChecked = useMemo(() => {
-    const checkedtasks = tasks.filter((item) => 
+    const checkedTasks = tasks.filter((item) => 
     item.checked === true
     )
-    return checkedtasks.length
+    return checkedTasks.length
   },[tasks])
   
   return(
@@ -22,12 +23,10 @@ const App = () => {
       checked={memoChecked}
       />
       <h2>タスクの追加</h2>
-      <TodoForm tasks={tasks} setTasks={setTasks}/>
+        <TodoForm tasks={tasks} setTasks={setTasks}/>
+        
       <h2>タスク一覧</h2>
-      <TodoList tasks={tasks} setTasks={setTasks}/>
-
-
-
+        <TodoList tasks={tasks} setTasks={setTasks}/>
     </div>
   )
 };

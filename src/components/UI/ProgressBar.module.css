@@ -1,0 +1,7 @@
+.ProgresBar {
+  background-color: orange;
+  width: 100px;
+  height:20px;
+  /* height: 100%; */
+  border-radius: 20px;
+}

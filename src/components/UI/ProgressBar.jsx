@@ -6,18 +6,21 @@ export const ProgressBar = ({checked, length}) => {
   return (
     <div>
       <StyledWrapGauge>
-      {percent >= 0 && (
-        <p>{percent}%</p>
+      {percent >= 0 ? (
+        <div>
+          <StyledGauge 
+          style={{ width: `${percent}%` }}
+          >{percent}%</StyledGauge>
+        </div>
+        ) : (
+          <StyledNoneGauge>表示する項目はありません</StyledNoneGauge>
         )}
-          <StyledGauge
-            style={{ width: `${percent}%` }}
-          />
       </StyledWrapGauge>
       <div>
         <div>
         </div>
         {percent === 100 && (
-          <p>全タスク完了！！</p>
+          <p>完了！！</p>
         )}
       </div>
       <div>
@@ -29,13 +32,21 @@ export const ProgressBar = ({checked, length}) => {
 
 const StyledWrapGauge = styled.div`
   background-color: #bbb;
-  height: 50%;
+  height: 50px;
   width: 100%;
-  border-radius: 20px
+  border-radius: 20px;
 `;
 
 const StyledGauge = styled.div`
+  display: grid;
+  place-items: center;
   background-color: orange;
-  height: 100%;
-  border-radius: 20px
+  height:50px;
+  border-radius: 20px;
+`;
+
+const StyledNoneGauge = styled.div`
+  display: grid;
+  place-items: center;
+  
 `;

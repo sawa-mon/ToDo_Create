@@ -1,5 +1,6 @@
 import React, {useRef} from 'react';
 
+
 export const TodoForm = ({tasks, setTasks}) => {
   const inputEl = useRef(null);
   
@@ -13,16 +14,20 @@ export const TodoForm = ({tasks, setTasks}) => {
       {
         title: value,
         checked: false,
-      }, ...tasks
+        edit: false,
+      }, ...tasks,
     ])
 
     inputEl.current.value = "";
   }
-
   
   return(
     <div>
-      <input type="text" ref={inputEl}/>
+      {/* {tasks.edit ? (
+        <input type="text"placeholder="編集を終了して下さい" readOnly />
+      ) : ( */}
+        <input type="text" ref={inputEl} placeholder="タスクを入力して下さい"/>
+       {/* )} */}
       <button onClick={addTodo} >タスクを追加する</button>
     </div>
   )
