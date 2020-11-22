@@ -32,22 +32,24 @@ export const TodoListItem = ({task, tasks, setTasks, index}) => {
   return(
     <StyledSection>
         {edit ? (
-          <div>
+          <Styledinner>
             <button onClick={handleEdit}>更新する</button>
             <input type="text" defaultValue={task.title} ref={inputEl}/>
-          </div>
+          </Styledinner>
         ) : (
-          <div>
+          <Styledinner>
             <input onClick={handleDone} type="checkBox" checked={task.checked}/>
               {task.checked ? (
                     <del>{task.title}</del>
                   ) : (
                     <span>{task.title}</span>
                   )}
-          </div>
+          </Styledinner>
         )}
-              <button onClick={() => setEdit(!edit)}>編集する</button>
-              <button onClick={handleDelete}>削除する</button>
+          <Styledinner>
+            <button onClick={() => setEdit(!edit)}>編集する</button>
+            <button onClick={handleDelete}>削除する</button>
+          </Styledinner>
     </StyledSection>
   )
 };
@@ -55,7 +57,15 @@ export const TodoListItem = ({task, tasks, setTasks, index}) => {
 const StyledSection = styled.div`
   display: flex;
   align-items: center;
-`;
+  justify-content: space-between;
+  `;
 
-// const StyledChecked = styled.div`
-// `;
+const Styledinner = styled.div`
+  display:flex;
+  align-items: center;
+  font-size: 25px;
+
+  button {
+    height: 25px;
+  }
+`;

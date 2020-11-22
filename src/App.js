@@ -29,8 +29,8 @@ const App = () => {
         <h2>タスクの追加</h2>
         <TodoForm tasks={tasks} setTasks={setTasks}/>
       </StyledForm>
-      <StyledTasks>
         <h2>タスク一覧</h2>
+      <StyledTasks>
         <TodoList tasks={tasks} setTasks={setTasks}/>
       </StyledTasks>
     </StyledSection>
@@ -42,20 +42,22 @@ const StyledSection = styled.div`
   place-items: center;
   margin: auto;
   width: 500px;
+  height: 100vh;
+  background-color: #5b7ab0;
 `;
 
 const StyledInfo = styled.div`
-  width: 500px;
-  height: 120px;
+  height: 145px;
 `;
 
 const StyledForm = styled.div`
-  width: 500px;
   height: 100px;
 `;
 
 const StyledTasks = styled.div`
-
+  padding: 10px;
+  height: 400px;
+  overflow: auto;
 `;
 
 export default App;

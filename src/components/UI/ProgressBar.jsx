@@ -32,7 +32,8 @@ const StyledBackGauge = styled.div`
   top: 125px;
   background-color: #bbb;
   height: 40px;
-  width: 500px;
+  width: 400px;
+  margin: 0 50px 0 50px;
   border-radius: 20px;
   display: flex;
   justify-content: flex-start;
