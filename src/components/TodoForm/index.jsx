@@ -1,4 +1,5 @@
 import React, {useRef} from 'react';
+import styled from 'styled-components';
 
 
 export const TodoForm = ({tasks, setTasks}) => {
@@ -14,7 +15,6 @@ export const TodoForm = ({tasks, setTasks}) => {
       {
         title: value,
         checked: false,
-        edit: false,
       }, ...tasks,
     ])
 
@@ -22,13 +22,27 @@ export const TodoForm = ({tasks, setTasks}) => {
   }
   
   return(
-    <div>
-      {/* {tasks.edit ? (
-        <input type="text"placeholder="編集を終了して下さい" readOnly />
-      ) : ( */}
+      <StyledAddArea>
         <input type="text" ref={inputEl} placeholder="タスクを入力して下さい"/>
-       {/* )} */}
-      <button onClick={addTodo} >タスクを追加する</button>
-    </div>
+        <button onClick={addTodo} >タスクを追加する</button>
+      </StyledAddArea>
   )
 };
+
+const StyledAddArea = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  padding: 5px;
+
+  input {
+    width: 310px;
+    height: 30px;
+  }
+
+  button {
+    width: 125px;
+    height: 36px;
+  }
+`;

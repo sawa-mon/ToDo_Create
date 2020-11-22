@@ -1,4 +1,5 @@
-import React,{useState, useRef, useMemo} from 'react';
+import React,{useState, useRef} from 'react';
+import styled from 'styled-components';
 
 export const TodoListItem = ({task, tasks, setTasks, index}) => {
   const [edit, setEdit] = useState(false);
@@ -27,19 +28,9 @@ export const TodoListItem = ({task, tasks, setTasks, index}) => {
 
     setEdit(false);
   }
-
-  // const memoEdit = useMemo(() => {
-  //   const editCheck = tasks.filter((item) =>
-  //   item.edit === true
-  //   )
-  //   return editCheck.edit
-  // },[tasks])
-
-  
   
   return(
-    <div>
-      <div>
+    <StyledSection>
         {edit ? (
           <div>
             <button onClick={handleEdit}>更新する</button>
@@ -47,24 +38,24 @@ export const TodoListItem = ({task, tasks, setTasks, index}) => {
           </div>
         ) : (
           <div>
-              {!task.checked && (
-                <div>
-                  <input onClick={handleDone} type="checkBox" checked={task.checked}/>
-                  <span>{task.title}</span>
-                  <button onClick={() => setEdit(!edit)}>編集する</button>
-                  <button onClick={handleDelete}>削除する</button>
-                </div>
-              )}
+            <input onClick={handleDone} type="checkBox" checked={task.checked}/>
+              {task.checked ? (
+                    <del>{task.title}</del>
+                  ) : (
+                    <span>{task.title}</span>
+                  )}
           </div>
         )}
-      </div>
-      <div>
-        {task.checked && (
-        <div>
-          <span>{task.title}</span>
-        </div>
-        )}
-      </div>
-    </div>
+              <button onClick={() => setEdit(!edit)}>編集する</button>
+              <button onClick={handleDelete}>削除する</button>
+    </StyledSection>
   )
-}
+};
+
+const StyledSection = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+// const StyledChecked = styled.div`
+// `;
