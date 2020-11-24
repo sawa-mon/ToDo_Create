@@ -41,7 +41,7 @@ const App = () => {
 const StyledSection = styled.div`
   place-items: center;
   margin: auto;
-  width: 500px;
+  width: 450px;
   height: 100vh;
   background-color: #5b7ab0;
 `;

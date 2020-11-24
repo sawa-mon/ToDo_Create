@@ -4,23 +4,20 @@ import styled from 'styled-components';
 
 export const TodoForm = ({tasks, setTasks}) => {
   const inputEl = useRef(null);
-  
+
   const addTodo = () => {
     const value = inputEl.current.value;
     if(!value.length) {
       return
     }
-
-    setTasks([
-      {
+    setTasks([...tasks,  {
         title: value,
         checked: false,
-      }, ...tasks,
+      }
     ])
-
     inputEl.current.value = "";
   }
-  
+
   return(
       <StyledAddArea>
         <input type="text" ref={inputEl} placeholder="タスクを入力して下さい"/>

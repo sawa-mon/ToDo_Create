@@ -11,15 +11,12 @@ export const ProgressBar = ({checked, length}) => {
           </StyledBackGauge>
             ) : (
           <StyledBackGauge>
-          {percent >= 0 && (
+          {percent >= 0 ? (
               <StyledGauge style={{ width: `${percent}%` }}>
-                {percent === 0 ? (
-                  <>
-                  </>
-                ) : (
-                  <>{percent}%</>
-                )}
+                  <span>{percent}%</span>
               </StyledGauge>
+          ): (
+            <span>NowLoading...</span>
           )}
           </StyledBackGauge>
         )}
@@ -33,15 +30,11 @@ const StyledBackGauge = styled.div`
   background-color: #bbb;
   height: 40px;
   width: 400px;
-  margin: 0 50px 0 50px;
+  margin: 0 25px 0 25px;
   border-radius: 20px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  p{
-    display: grid;
-    place-items: center;
-  }
   `;
 
 const StyledGauge = styled.div`
