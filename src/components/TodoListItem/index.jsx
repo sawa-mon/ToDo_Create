@@ -1,50 +1,63 @@
-import React,{useState, useRef, useEffect} from 'react';
+import React,{useState, useRef} from 'react';
+import styled from 'styled-components';
 
-export const TodoListItem = ({task, tasks, setTasks, index}) => {
-  const[edit, setEdit] = useState(false);
-  const inputEl = useRef(null);
+export const TodoListItem = ({task, tasks, setTasks, index, handleEdit}) => {
+  const [edit, setEdit] = useState(false);
+  const inputTodo = useRef(null);
 
-  const handleEdit = () => {
-    const value = inputEl.current.value;
-    const editEndTodo = tasks;
-    editEndTodo[index].title = value; //サンプル確認箇所
-    setTasks([...editEndTodo]);
-
-    setEdit(false);
-  }
-
-  const handledone = () => {
+  const handleDone = () => {
     const doneTodo = tasks;
     doneTodo[index].checked = !task.checked;
     setTasks([...doneTodo]);
-  }
+  };
 
   const handleDelete = () => {
     const deleteTodo = tasks;
-      deleteTodo.splice(index, 1);
+      deleteTodo.filter(index);
       setTasks([...deleteTodo]);
   }
-  console.log(task.checked)
-  
+
+
   return(
-    <div>
+    <StyledSection>
         {edit ? (
-          <div>
-            <button onClick={handleEdit}>更新する</button>
-            <input type="text" defaultValue={task.title} ref={inputEl}/>
-          </div>
+          <StyledInner>
+          <button onClick={() => { handleEdit(index, inputTodo.current.value)
+            setEdit(false)
+            }} >更新する</button>
+            <input type="text" defaultValue={task.title} ref={inputTodo}/>
+          </StyledInner>
         ) : (
-          <div>
-            <input onClick={handledone} type="checkBox" check={task.checked}/>
+          <StyledInner onClick={handleDone}>
+            <input type="checkBox" checked={task.checked} readOnly/>
               {task.checked ? (
                 <del>{task.title}</del>
                 ) : (
-                  <span>{task.title}</span>
-              )}
-          </div>
-        )}
-      <button onClick={() => setEdit(!edit)}>編集する</button>
-      <button onClick={handleDelete}>削除する</button>
-    </div>
+                  task.title
+                )}
+          </StyledInner>
+            )}
+            <StyledInner>
+              <button onClick={() => setEdit(!edit)}>編集する</button>
+              <button onClick={handleDelete}>削除する</button>
+            )}
+            </StyledInner>
+    </StyledSection>
   )
-}
+};
+
+const StyledSection = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  `;
+
+const StyledInner = styled.div`
+  display:flex;
+  align-items: center;
+  font-size: 25px;
+
+  button {
+    height: 25px;
+  }
+`;
